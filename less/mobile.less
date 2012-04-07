@@ -1,0 +1,117 @@
+// CSS Reset
+@import 'reset.less';
+
+// Core variables and mixins
+@import 'variables.less';
+@import 'mixins.less';
+
+// Base CSS
+@import 'type.less';
+
+
+// SCAFFOLDING
+// --------------------------------------------------
+.ui-content {
+    border-width: 0;
+    overflow: visible;
+    overflow-x: hidden;
+    padding: @baseLineHeight @gutterWidth;
+}
+
+.ui-inset {
+    margin: 0 @gutterWidth;
+}
+
+.ui-list {
+    margin-left: 0;
+
+    .title {
+        color: @gray;
+        text-transform: uppercase;
+        font-size: @baseFontSize - 2;
+        text-align: center;
+    }
+}
+
+// SCAFFOLDING
+// --------------------------------------------------
+html { height: 100% }
+body {
+    height: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#container {
+    .transition( all .3s ease-in );
+    background-image: url('@{images-dir}texture/white-carbon.png');
+    min-height: 100%;
+    min-width: 320px;
+    position: relative;
+    z-index: 10;
+}
+
+// When nav is showing
+#container.offscreen {
+    overflow: hidden;
+    height: 100%;
+    left: 270px;
+    margin-right: 270px;
+}
+
+// Global Navigation
+nav.global {
+    background-image: url('@{images-dir}texture/black-linen.png');
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 270px;
+    overflow-y: scroll;
+    z-index: 1;
+    text-shadow: -1px -1px 0 @black;
+}
+
+// NavBar
+header.global {
+    height: @navbarHeight;
+
+    #gradient > .vertical( lighten(@navbarBackground, 5%), @navbarBackground );
+    border-top: 1px solid @navbarBackgroundHighlight;
+    border-bottom: 2px solid darken(@navbarBackground, 15%);
+    color: @navbarText;
+
+    .icon {
+        .ir();
+        height: @navbarHeight;
+        width: 50px;
+
+        &:hover { cursor: pointer; }
+        &:active {
+            #gradient > .vertical( @navbarBackground, darken(@navbarBackground, 5%) );
+            background-repeat: no-repeat;
+        }
+    }
+    .toggle-nav {
+        float: left;
+        background-image: url('@{images-dir}icon/nav-toggle.png');
+        border-right: 1px solid darken(@navbarBackground, 5%);
+
+        &:active {
+            background-image: url('@{images-dir}icon/nav-toggle.png');
+        }
+    }
+    .show-calendar {
+        float: right;
+        background-image: url('@{images-dir}icon/show-calendar.png');
+        border-left: 1px solid darken(@navbarBackground, 5%);
+
+        &:active {
+            background-image: url('@{images-dir}icon/show-calendar.png');
+        }
+    }
+}
+
+// Media Queries
+@import 'responsive.less';
